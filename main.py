@@ -15,15 +15,17 @@ def hotels():
   max = -sys.maxsize - 1
   for row in csvData: 
     if state.lower() == 'india' or row[2].lower() == state.lower():
-      hotelCode = row[1]
+      
       if costOrRating.lower() == "cost":
         metric = float(row[3])
       elif costOrRating.lower() == "rating":
         metric = float(row[4])
       if operation.lower() == 'cheapest' and metric < min:
         min = metric
+        hotelCode = row[1]
       elif operation.lower() == 'highest' and metric > max:
         max = metric
+        hotelCode = row[1]
       elif operation.lower() == 'average':
         sum = sum + metric
         count = count + 1
